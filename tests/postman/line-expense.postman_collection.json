@@ -1,0 +1,37 @@
+{
+  "info": {
+    "name": "LINE Expense Bot",
+    "_postman_id": "12345678-abcd-efgh-ijkl-1234567890ab",
+    "description": "Postman collection สำหรับทดสอบ Supabase REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Insert Ledger Entry",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "apikey", "value": "{{SERVICE_ROLE_KEY}}", "type": "text" },
+          { "key": "Authorization", "value": "Bearer {{SERVICE_ROLE_KEY}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" },
+          { "key": "Prefer", "value": "resolution=merge-duplicates,return=representation", "type": "text" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[{\n  \"message_id\": \"postman-test-001\",\n  \"line_user_id\": \"Udebug\",\n  \"raw_text\": \"insert via postman\",\n  \"amount\": 99,\n  \"occurred_at\": \"2025-09-09T00:00:00Z\",\n  \"recorded_at\": \"2025-09-09T00:00:00Z\",\n  \"source\": \"line\",\n  \"status\": \"ok\"\n}]"
+        },
+        "url": {
+          "raw": "{{SUPABASE_URL}}/rest/v1/ledger_entries?on_conflict=message_id",
+          "host": ["{{SUPABASE_URL}}"],
+          "path": ["rest", "v1", "ledger_entries"],
+          "query": [{ "key": "on_conflict", "value": "message_id" }]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    { "key": "SUPABASE_URL", "value": "https://<your-project>.supabase.co" },
+    { "key": "SERVICE_ROLE_KEY", "value": "<your-service-role-key>" }
+  ]
+}
