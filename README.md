@@ -29,8 +29,6 @@ line-expense-bot/
 ├── README.md # หน้านี้ (Landing Page)
 └── LICENSE
 
-yaml
-คัดลอกโค้ด
 
 ---
 
